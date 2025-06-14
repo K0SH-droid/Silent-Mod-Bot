@@ -1,3 +1,2 @@
-discord.py
-Flask
-aiosqlite
+Flask==2.3.3
+discord.py==2.3.2
