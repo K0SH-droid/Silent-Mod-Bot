@@ -1,12 +1,15 @@
 from flask import Flask
 import os
 
-app = Flask('')
+app = Flask(__name__)
 
 @app.route('/')
 def home():
     return "I'm alive!"
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 8080))  # << das ist wichtig für Render
+def run():
+    port = int(os.environ.get("PORT", 10000))  # Port aus ENV holen
     app.run(host='0.0.0.0', port=port)
+
+if __name__ == '__main__':
+    run()
