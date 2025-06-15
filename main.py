@@ -4,8 +4,7 @@ from discord.ext import commands
 import aiosqlite
 import datetime
 import os
-import sys
-from keep_alive import keep_alive  # Replit hosting support
+from keep_alive import run  # From your Flask keep_alive.py
 
 intents = discord.Intents.default()
 intents.members = True
@@ -221,8 +220,8 @@ async def userinfo(inter: discord.Interaction, user: discord.Member = None):
             embed.add_field(name=f"Warning {i} - {dt}", value=f"{reason} (by {mod})", inline=False)
     await inter.response.send_message(embed=embed)
 
-# Replit keep-alive server
-keep_alive()
+# Start the keep_alive web server for uptime pings
+run()
 
-# Start bot with secure token from environment
+# Run the bot using a secure environment token
 bot.run(os.getenv("DISCORD_TOKEN"))
